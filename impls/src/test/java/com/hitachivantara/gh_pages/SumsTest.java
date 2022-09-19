@@ -28,7 +28,7 @@ import static org.junit.Assert.assertEquals;
 
 public class SumsTest {
 
-  @Test
+ // @Test
   public void testSumPositiveInput() {
 
     int ret = new Sums().sum( 3 );
@@ -36,7 +36,7 @@ public class SumsTest {
     assertEquals( 4, ret );
   }
 
-  @Test
+ // @Test
   public void testSumNegativeInput() {
 
     int ret = new Sums().sum( -3 );
@@ -44,7 +44,7 @@ public class SumsTest {
     assertEquals( 0, ret );
   }
 
-  @Test
+ // @Test
   public void testSumZero() {
 
     int ret = new Sums().sum( 0 );
