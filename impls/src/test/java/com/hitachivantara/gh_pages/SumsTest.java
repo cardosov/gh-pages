@@ -35,7 +35,7 @@ public class SumsTest {
 
     assertEquals( 4, ret );
   }
-/*
+
   @Test
   public void testSumNegativeInput() {
 
@@ -50,6 +50,6 @@ public class SumsTest {
     int ret = new Sums().sum( 0 );
 
     assertEquals( 1, ret );
-  }*/
+  }
 
 }

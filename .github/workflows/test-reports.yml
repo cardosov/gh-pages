@@ -28,4 +28,5 @@ jobs:
       with:
         branch: test-reports
         folder: impls/target/site/jacoco
-        commit-message: ":+1 Test Report for ${{ github.run_number }}"
+        commit-message: ":hot Test Report for build ${{ github.run_number }}"
+        tag: "v${{ github.run_number }}"
