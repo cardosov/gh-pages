@@ -1,0 +1,16 @@
+.cache
+coverage
+dist
+maven-metadata-local.xml
+node_modules
+.DS_Store
+npm-debug.log
+.idea
+*.iml
+target/
+report.html
+.vscode
+.project
+.settings
+.classpath
+automation/ui/test-output/

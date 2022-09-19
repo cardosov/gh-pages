@@ -1,0 +1,31 @@
+name: Merge to main
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Java version
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '11'
+        cache: maven
+
+      # Build Code
+    - name: Run Unit Tests
+      run: mvn clean verify -Daudit -s .github/settings.xml
+
+    - name: Deploy Test Reports
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: test-reports
+        folder: impls/target/site/jacoco
+        commit-message: ":+1 Test Report for ${{ github.run_number }}"

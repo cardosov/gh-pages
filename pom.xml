@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.hitachivantara.gh-pages</groupId>
+  <artifactId>parent</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+  </dependencies>
+
+  <packaging>pom</packaging>
+
+  <name>${project.artifactId}</name>
+  <description>GH Pages</description>
+
+  <organization>
+    <name>Hitachi Vantara</name>
+    <url>http://www.hitachivantara.com</url>
+  </organization>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <distributionManagement>
+    <repository>
+      <id>hv.public.release.repo</id>
+      <name>Hitachi Vantara Public Maven Release Repository</name>
+      <url>https://repo.orl.eng.hitachivantara.com/artifactory/hvpub-mvn-release-orl/</url>
+    </repository>
+    <snapshotRepository>
+      <id>hv.public.snapshot.repo</id>
+      <name>Hitachi Vantara Public Maven Snapshot Repository</name>
+      <url>https://repo.orl.eng.hitachivantara.com/artifactory/hvpub-mvn-snapshot-orl/</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <repositories>
+    <repository>
+      <id>hv-public</id>
+      <name>Hitachi Vantara Public</name>
+      <url>https://repo.orl.eng.hitachivantara.com/artifactory/hv-mvn/</url>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+      </snapshots>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>hv-public</id>
+      <name>Hitachi Vantara Public</name>
+      <url>https://repo.orl.eng.hitachivantara.com/artifactory/hv-mvn/</url>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    <source.jdk.version>11</source.jdk.version>
+    <target.jdk.version>11</target.jdk.version>
+    <maven.compiler.source>${source.jdk.version}</maven.compiler.source>
+    <maven.compiler.target>${target.jdk.version}</maven.compiler.target>
+
+    <jacoco-maven-plugin.version>0.8.4</jacoco-maven-plugin.version>
+    <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
+    <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+    <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
+    <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+    <maven-site-plugin.version>3.7.1</maven-site-plugin.version>
+    <maven-dependency-plugin.version>3.1.2</maven-dependency-plugin.version>
+    <requirejs-maven-plugin.version>2.0.4</requirejs-maven-plugin.version>
+    <maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
+    <iterator-maven-plugin.version>0.5.1</iterator-maven-plugin.version>
+    <maven-assembly-plugin.version>3.1.1</maven-assembly-plugin.version>
+    <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+    <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+    <maven-javadoc-plugin.version>3.0.0</maven-javadoc-plugin.version>
+    <maven-jxr-plugin.version>2.5</maven-jxr-plugin.version>
+    <maven-project-info-reports-plugin.version>2.9</maven-project-info-reports-plugin.version>
+    <maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
+    <maven-remote-resources-plugin.version>1.6.0</maven-remote-resources-plugin.version>
+    <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
+    <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
+    <maven-surefire-report-plugin.version>2.21.0</maven-surefire-report-plugin.version>
+    <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
+    <maven-verifier-plugin.version>1.1</maven-verifier-plugin.version>
+    <maven-war-plugin.version>3.2.0</maven-war-plugin.version>
+    <maven-bundle-plugin.version>5.1.4</maven-bundle-plugin.version>
+    <os-maven-plugin.version>1.6.2</os-maven-plugin.version>
+
+    <maven.test.failure.ignore>false</maven.test.failure.ignore>
+    <maven-surefire-plugin.reuseForks>true</maven-surefire-plugin.reuseForks>   <!-- default setting is reuseForks = true -->
+    <maven-surefire-plugin.forkCount>1</maven-surefire-plugin.forkCount>        <!-- default setting is forkCount = 1 -->
+    <maven-surefire-plugin.testFailureIgnore>${maven.test.failure.ignore}</maven-surefire-plugin.testFailureIgnore>
+    <maven-surefire-plugin.argLine/>
+    <maven-surefire-plugin.ci.argLine/>
+    <maven-failsafe-plugin.reuseForks>true</maven-failsafe-plugin.reuseForks>   <!-- default setting is reuseForks = true -->
+    <maven-failsafe-plugin.forkCount>1</maven-failsafe-plugin.forkCount>        <!-- default setting is forkCount = 1 -->
+    <maven-failsafe-plugin.testFailureIgnore>${maven.test.failure.ignore}</maven-failsafe-plugin.testFailureIgnore>
+    <maven-failsafe-plugin.argLine/>
+    <maven-failsafe-plugin.ci.argLine/>
+
+
+    <jacocoSurefireArgLine/> <!-- this is set by jacoco's prepare-agent execution -->
+    <jacocoFailsafeArgLine/> <!-- this is set by jacoco's prepare-agent execution -->
+
+    <!-- test -->
+    <junit.version>4.13.1</junit.version>
+    <mockito.version>2.28.2</mockito.version>
+    <hamcrest.version>1.3</hamcrest.version>
+
+    <!-- PHASE BINDINGS -->
+    <node-npm_install-phase>initialize</node-npm_install-phase>
+    <generate-bundle-manifest-phase>compile</generate-bundle-manifest-phase>
+    <test-unit-execute-phase>test</test-unit-execute-phase>
+    <assembly_package-phase>package</assembly_package-phase>
+    <test-integration_add-resources-phase>pre-integration-test</test-integration_add-resources-phase>
+    <test-integration_add-source-phase>pre-integration-test</test-integration_add-source-phase>
+    <test-integration_compile-phase>pre-integration-test</test-integration_compile-phase>
+    <test-integration_execute-phase>integration-test</test-integration_execute-phase>
+    <attach-sources-phase>verify</attach-sources-phase>
+    <test-integration_report-phase>verify</test-integration_report-phase>
+    <javascript-doc_copy-resources-phase>pre-site</javascript-doc_copy-resources-phase>
+
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit.version}</version>
+        <scope>test</scope>
+        <exclusions>
+          <exclusion>
+            <artifactId>*</artifactId>
+            <groupId>*</groupId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      <dependency>
+        <groupId>org.hamcrest</groupId>
+        <artifactId>hamcrest-all</artifactId>
+        <version>${hamcrest.version}</version>
+        <scope>test</scope>
+        <exclusions>
+          <exclusion>
+            <artifactId>*</artifactId>
+            <groupId>*</groupId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+
+  <modules>
+    <module>api</module>
+    <module>impls</module>
+  </modules>
+
+  <build>
+    <extensions>
+      <extension>
+        <!-- This extension plugin generates and normalizes properties related to the operating system.
+             These can be used to select characteristics of the build which are OS specific.
+             An example of this is the protobuf-maven-plugin which uses a OS specific artifact to generate code. -->
+        <groupId>kr.motd.maven</groupId>
+        <artifactId>os-maven-plugin</artifactId>
+        <version>${os-maven-plugin.version}</version>
+      </extension>
+    </extensions>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>io.swagger.core.v3</groupId>
+          <artifactId>swagger-maven-plugin</artifactId>
+          <version>${swagger-core.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.felix</groupId>
+          <artifactId>maven-bundle-plugin</artifactId>
+          <version>${maven-bundle-plugin.version}</version>
+          <extensions>true</extensions>
+          <configuration>
+            <instructions>
+              <!-- Required for generic jar version checking -->
+              <Implementation-Version>${project.version}</Implementation-Version>
+            </instructions>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>${maven-resources-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-remote-resources-plugin</artifactId>
+          <version>${maven-remote-resources-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>${jacoco-maven-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>${maven-source-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>${maven-surefire-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-report-plugin</artifactId>
+          <version>${maven-surefire-report-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-failsafe-plugin</artifactId>
+          <version>${maven-failsafe-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-verifier-plugin</artifactId>
+          <version>${maven-verifier-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>${maven-jar-plugin.version}</version>
+          <configuration>
+            <archive>
+              <manifest>
+                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+              </manifest>
+              <manifestEntries>
+                <Source-Java-Version>${source.jdk.version}</Source-Java-Version>
+                <Target-Java-Version>${target.jdk.version}</Target-Java-Version>
+                <Implementation-ProductID>${project.artifactId}</Implementation-ProductID>
+              </manifestEntries>
+            </archive>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>${maven-compiler-plugin.version}</version>
+          <configuration>
+            <source>${source.jdk.version}</source>
+            <target>${target.jdk.version}</target>
+            <compilerArgument>${compilerArgument}</compilerArgument>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>${maven-clean-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>${maven-dependency-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>${maven-install-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>${maven-deploy-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>${maven-release-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>${maven-assembly-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>com.github.bringking</groupId>
+          <artifactId>requirejs-maven-plugin</artifactId>
+          <version>${requirejs-maven-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>com.github.eirslett</groupId>
+          <artifactId>frontend-maven-plugin</artifactId>
+          <version>${frontend-maven-plugin.version}</version>
+          <configuration>
+            <workingDirectory>${frontend-maven-plugin.workingDirectory}</workingDirectory>
+            <installDirectory>${frontend-maven-plugin.installDirectory}</installDirectory>
+            <nodeVersion>${nodejs.version}</nodeVersion>
+            <npmVersion>${npm.version}</npmVersion>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <version>${maven-antrun-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>${maven-war-plugin.version}</version>
+          <configuration>
+            <failOnMissingWebXml>false</failOnMissingWebXml>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>com.soebes.maven.plugins</groupId>
+          <artifactId>iterator-maven-plugin</artifactId>
+          <version>${iterator-maven-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.xolstice.maven.plugins</groupId>
+          <artifactId>protobuf-maven-plugin</artifactId>
+          <version>${protobuf-maven-plugin.version}</version>
+          <configuration>
+            <protocArtifact>com.google.protobuf:protoc:${protoc.version}:exe:${os.detected.classifier}</protocArtifact>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>versions-maven-plugin</artifactId>
+          <version>${codehaus-versions-maven-plugin.version}</version>
+          <dependencies>
+            <dependency>
+              <groupId>org.codehaus.woodstox</groupId>
+              <artifactId>stax2-api</artifactId>
+              <version>${codehaus-woodstox-stax2-api.version}</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+        <plugin>
+          <groupId>io.fabric8</groupId>
+          <artifactId>docker-maven-plugin</artifactId>
+          <version>${fabric8.docker.maven.plugin.version}</version>
+          <configuration>
+            <skip>true</skip>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>com.kiwigrid</groupId>
+          <artifactId>helm-maven-plugin</artifactId>
+          <version>${com.kiwigrid.helm-maven-plugin.version}</version>
+          <configuration>
+            <skip>true</skip>
+            <chartDirectory>${project.basedir}/target</chartDirectory>
+            <useLocalHelmBinary>true</useLocalHelmBinary>
+            <uploadRepoStable>
+              <name>stable-repo</name>
+              <url>${helm.repository.url}</url>
+              <type>${helm.repository.type}</type>
+              <username>${helm.username}</username>
+              <password>${helm.password}</password>
+            </uploadRepoStable>
+          </configuration>
+        </plugin>
+
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>default-test</id>
+            <phase>${test-unit-execute-phase}</phase>
+            <goals>
+              <goal>test</goal>
+            </goals>
+            <configuration>
+              <argLine>-Dfile.encoding=${project.build.sourceEncoding} @{jacocoSurefireArgLine} ${maven-surefire-plugin.argLine} ${maven-surefire-plugin.ci.argLine}</argLine>
+              <forkCount>${maven-surefire-plugin.forkCount}</forkCount>
+              <reuseForks>${maven-surefire-plugin.reuseForks}</reuseForks>
+              <testFailureIgnore>${maven-surefire-plugin.testFailureIgnore}</testFailureIgnore>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <phase>${attach-sources-phase}</phase>
+            <goals>
+              <goal>jar-no-fork</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <executions>
+          <execution>
+            <id>generate-bundle-manifest</id>
+            <phase>${generate-bundle-manifest-phase}</phase>
+            <goals>
+              <goal>manifest</goal>
+            </goals>
+            <configuration>
+              <!-- override to specify import/export packages -->
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
+  <profiles>
+
+    <profile>
+      <id>audit</id>
+      <activation>
+        <property>
+          <name>audit</name>
+        </property>
+      </activation>
+      <properties>
+        <test-unit-jacoco-agent-prep-phase>initialize</test-unit-jacoco-agent-prep-phase>
+        <test-unit-jacoco-report-phase>verify</test-unit-jacoco-report-phase>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>test-unit-jacoco-agent-prep</id>
+                <phase>${test-unit-jacoco-agent-prep-phase}</phase>
+                <goals>
+                  <goal>prepare-agent</goal>
+                </goals>
+                <configuration>
+                  <propertyName>jacocoSurefireArgLine</propertyName>
+                </configuration>
+              </execution>
+              <execution>
+                <id>test-unit-jacoco-report</id>
+                <phase>${test-unit-jacoco-report-phase}</phase>
+                <goals>
+                  <goal>report</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+  </profiles>
+
+</project>
+
