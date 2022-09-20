@@ -28,22 +28,9 @@ jobs:
       with:
         branch: test-reports
         folder: impls/target/site/jacoco
-        commit-message: ":tada: Test Report for build ${{ github.run_number }} yhjYeay"
+        commit-message: ":tada: Test Report for build ${{ github.run_number }}"
         tag: "v${{ github.run_number }}"
 
-    - name: Checkout wiki code
-      uses: actions/checkout@v2
-      with:
-        repository: ${{github.repository}}.wiki
-        path: markdown
-
-    - name: Push to wiki
+    - name: Reporting
       run: |
-        cd markdown
-        git config --global user.email "you@example.com"
-        git config --global user.name "${{github.workflow}}"
-        mkdir -p "b${{ github.run_number }}"
-        cp -r ../impls/target/site/jacoco/ "b${{ github.run_number }}/"
-        ln -s "b${{ github.run_number }}/index.html" Build-${{ github.run_number }}.md
-        git add .
-        git diff-index --quiet HEAD || git commit -m "Add changes" && git push
+        echo "### [Test Report](https://htmlpreview.github.io/?${{ github.server_url }}/${{ github.repository }}/blob/v${{ github.run_number }}/index.html) :rocket:" >> $GITHUB_STEP_SUMMARY
