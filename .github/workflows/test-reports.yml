@@ -28,5 +28,5 @@ jobs:
       with:
         branch: test-reports
         folder: impls/target/site/jacoco
-        commit-message: ":tada: Test Report for build ${{ github.run_number }} yhYeay"
+        commit-message: ":tada: Test Report for build ${{ github.run_number }} yhjjjYeay"
         tag: "v${{ github.run_number }}"
