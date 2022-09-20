@@ -28,5 +28,20 @@ jobs:
       with:
         branch: test-reports
         folder: impls/target/site/jacoco
-        commit-message: ":tada: Test Report for build ${{ github.run_number }} yhjjjYeay"
+        commit-message: ":tada: Test Report for build ${{ github.run_number }} yhjYeay"
         tag: "v${{ github.run_number }}"
+
+    - name: Checkout wiki code
+      uses: actions/checkout@v2
+      with:
+        repository: ${{github.repository}}.wiki
+        path: markdown
+
+    - name: Push to wiki
+      run: |
+        cd markdown
+        git config --global user.email "you@example.com"
+        git config --global user.name "${{github.workflow}}"
+        curl https://raw.githubusercontent.com/cardosov/gh-pages/74ea77d418a3c9227a9f9e892d99e617d05001c1/index.html -o Build-${{ github.run_number }}.md 
+        git add .
+        git diff-index --quiet HEAD || git commit -m "Add changes" && git push
