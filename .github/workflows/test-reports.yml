@@ -42,6 +42,8 @@ jobs:
         cd markdown
         git config --global user.email "you@example.com"
         git config --global user.name "${{github.workflow}}"
-        curl https://raw.githubusercontent.com/cardosov/gh-pages/74ea77d418a3c9227a9f9e892d99e617d05001c1/index.html -o Build-${{ github.run_number }}.md 
+        mkdir -p "b${{ github.run_number }}"
+        cp -r ../impls/target/site/jacoco/ "b${{ github.run_number }}/"
+        ln -s "b${{ github.run_number }}/index.html" Build-${{ github.run_number }}.md
         git add .
         git diff-index --quiet HEAD || git commit -m "Add changes" && git push
