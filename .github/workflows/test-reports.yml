@@ -24,13 +24,10 @@ jobs:
       run: mvn clean verify -Daudit -s .github/settings.xml
 
     - name: Deploy Test Reports
-      uses: JamesIves/github-pages-deploy-action@v4
+      uses: hv-actions/report-archiver@main
       with:
-        branch: test-reports
-        folder: impls/target/site/jacoco
+        reporting-branch: 'test-reports'
+        lookup-folder: 'target/site/serenity'
+        report-index-page: 'index.html'
         commit-message: "Test Report files for build ${{ github.run_number }}"
-        tag: "v${{ github.run_number }}"
-
-    - name: Reporting
-      run: |
-        echo "### [Unit Test Report for build ${{ github.run_number }}](https://htmlpreview.github.io/?${{ github.server_url }}/${{ github.repository }}/blob/v${{ github.run_number }}/index.html) :rocket:" >> $GITHUB_STEP_SUMMARY
+        tag-name: "v${{ github.run_number }}"
